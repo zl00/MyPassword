@@ -26,12 +26,12 @@ class AppInfo extends Component {
     return (
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Image 
-          source={require('./image/Jobs.png')} 
+          source={this.props.appImage} 
           style={styles.image}
           borderRadius={21}
           overflow='hidden'
         />
-        <Text style={styles.h1} > Apple ID </Text>
+        <Text style={styles.h1} >{this.props.appName}</Text>
       </View>
     )
   }
@@ -137,7 +137,7 @@ class GeneratePassword extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <AppInfo />
+        <AppInfo appImage={this.props.appImage} appName={this.props.appName}/>
 
         <Item 
           title={'Username'} 
@@ -212,7 +212,9 @@ export default class App extends Component {
         initialRoute={{
           component: GeneratePassword,
           passProps: { 
-           events: this.eventEmitter 
+            events: this.eventEmitter,
+            appImage: require('./image/Jobs.png'),
+            appName: 'Apple ID'
           },
 
           title: 'New Login',
